@@ -1,11 +1,12 @@
-{ 
+{
  "apps" : [
       {
         "name": "node_service",
-        "script": "./server.js",
-        "out_file": "./log/server.log",
-        "error_file": "./log/server.log",
-        "merge_logs": true
+        "script": "/node_docker/app/server.js",
+        "out_file": "/node_docker/log/server.log",
+        "error_file": "/node_docker/log/server.log",
+        "merge_logs": true,
+        "watch": [ "app" ]
       }
     ]
 }

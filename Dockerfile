@@ -10,16 +10,21 @@ RUN cd /usr/local && \
     tar --strip-components 1 -xzf ./node-${NODEJS_VERSION}-linux-x64.tar.gz && \
     rm -f ./node-${NODEJS_VERSION}-linux-x64.tar.gz
 
-RUN npm i pm2 -g    
+RUN npm i pm2 -g
 
-# set your workdir
-WORKDIR /home/dmitrijd/node_docker
+# set workdir in container
+WORKDIR /node_docker
 
 # access to folder for logs
-VOLUME ["./log"]
+#VOLUME ["./log"]
 
 COPY . .
 
 #EXPOSE 80:5000
 
 CMD ["./start.sh"]
+
+
+
+
+

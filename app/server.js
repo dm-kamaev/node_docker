@@ -20,8 +20,15 @@ app.use(bodyParser.json());
 
 app.use('/', async function(req, res) {
   console.log('URL => '+req.url);
-  res.json({ test: 'Hello node js via docker '});
+  res.json({ test: 'Hello node js via docker ', key: [1,2,3]});
 });
+
+
+app.use('/fail', async function(req, res) {
+  throw new Error('/fail test');
+});
+
+
 
 /*app.use((req, res, next) => {
   req.cookies_api = new Cookies_api(req, res);
