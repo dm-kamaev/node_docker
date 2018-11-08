@@ -1,0 +1,11 @@
+{ 
+ "apps" : [
+      {
+        "name": "node_service",
+        "script": "./server.js",
+        "out_file": "./log/server.log",
+        "error_file": "./log/server.log",
+        "merge_logs": true
+      }
+    ]
+}
