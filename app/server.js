@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const mysql = require('/node_docker/app/mysql.js');
 const bodyParser = require('body-parser')
 require('express-async-await')(app);
 
@@ -20,7 +21,12 @@ app.use(bodyParser.json());
 
 app.use('/', async function(req, res) {
   console.log('URL => '+req.url);
-  res.json({ test: 'Hello node js via docker ', key: [1,2,3]});
+  try {
+    var from_db = await mysql.query('SELECT User FROM mysql.user');
+  } catch(err) {
+    console.log(err);
+  }
+  res.json({ test: 'Hello node js via docker ', key: [1,2,3], from_db });
 });
 
 
@@ -67,7 +73,7 @@ app.use(function(err, req, res, next) {
   res.status(500).send('Internal error');
 });
 
-app.listen(80, function () {
+app.listen(5000, function () {
   console.log('Example app listening on port 80 to 5000!');
 });
 
