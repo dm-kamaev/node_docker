@@ -26,45 +26,13 @@ app.use('/', async function(req, res) {
   } catch(err) {
     console.log(err);
   }
-  res.json({ test: 'Hello node js via docker ', key: [1,2,3], from_db });
+  res.json({ test: 'Hello node js via docker ', key: [1,2,3, 5], from_db });
 });
 
 
 app.use('/fail', async function(req, res) {
   throw new Error('/fail test');
 });
-
-
-
-/*app.use((req, res, next) => {
-  req.cookies_api = new Cookies_api(req, res);
-  next();
-});
-*/
-
-/*let count = 0;
-const two_day = 1000*60*60*48;
-app.use(function (req, res, next) {
-  if (!req.cookies_api.get('u_id')) {
-    req.cookies_api.set('u_id', Date.now() + count, { maxAge: two_day, path: '/' });
-    count++;
-  }
-  next();
-});
-*/
-
-//app.use('/dist', express.static('../dist/'));
-
-//app.use(router_books);
-//app.use(router_reviews_books);
-
-/*app.all('*', async function (req, res) {
-  var body = await fs.promise_read_file('../index.html', 'utf-8');
-  res
-    .status(200)
-    .send(body);
-});
-*/
 
 
 // ===============================================
